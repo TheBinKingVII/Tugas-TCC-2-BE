@@ -1,0 +1,32 @@
+@baseUrl = http://localhost:3000
+
+### @name health-check
+GET {{baseUrl}}/api/notes
+
+### @name get-all-notes
+GET {{baseUrl}}/api/notes
+
+### @name create-note
+POST {{baseUrl}}/api/notes
+Content-Type: application/json
+
+{
+  "judul": "Belajar Express",
+  "isi": "Membuat REST API notes dengan Sequelize."
+}
+
+### @name get-note-by-id
+GET {{baseUrl}}/api/notes/1
+
+### @name update-note-by-id
+PUT {{baseUrl}}/api/notes/1
+Content-Type: application/json
+
+{
+  "judul": "Belajar Express Update",
+  "isi": "Isi catatan sudah diperbarui."
+}
+
+### @name delete-note-by-id
+DELETE {{baseUrl}}/api/notes/1
+
