@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const { initDatabase } = require("./config/database");
 const noteRoutes = require("./routes/noteRoutes");
 const { Note } = require("./models/noteModels");
@@ -8,6 +9,15 @@ const { Note } = require("./models/noteModels");
 dotenv.config();
 
 const app = express();
+app.use(
+  cors({
+    origin: [
+      "https://note-fe-059-dot-b-03-489013.uc.r.appspot.com",
+      "http://localhost:8080",
+      "http://localhost:3000",
+    ],
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
