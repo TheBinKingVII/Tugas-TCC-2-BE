@@ -1,3 +1,8 @@
 node_modules/
 .env
 .env.example
+alur_pembuatan.txt
+daftar_endpoint.txt
+endpoint_tabel.txt
+tabel_endpoint.txt
+api.rest

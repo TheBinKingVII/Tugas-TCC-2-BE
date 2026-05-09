@@ -30,7 +30,7 @@ async function ensureDatabaseExists() {
 
   try {
     await pool.query(
-      `CREATE DATABASE IF NOT EXISTS \`${database}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`
+      `CREATE DATABASE IF NOT EXISTS \`${database}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`,
     );
   } finally {
     await pool.end();
@@ -59,4 +59,3 @@ async function initDatabase() {
 }
 
 module.exports = { getSequelize, initDatabase };
-

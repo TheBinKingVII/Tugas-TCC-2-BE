@@ -26,9 +26,8 @@ function initNoteSchema(sequelize) {
     {
       tableName: "notes",
       timestamps: false,
-    }
+    },
   );
 }
 
 module.exports = { initNoteSchema };
-
