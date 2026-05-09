@@ -1,5 +1,5 @@
 node_modules/
-.env
+
 .env.example
 alur_pembuatan.txt
 daftar_endpoint.txt
