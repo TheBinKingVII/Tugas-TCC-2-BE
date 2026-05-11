@@ -28,11 +28,13 @@ async function startServer() {
     // Buat tabel notes otomatis jika belum ada
     await Note.sync();
 
-    // Frontend (HTML/CSS/JS tanpa framework)
-    app.use(express.static(path.join(__dirname, "..", "FE")));
+    // Root server hanya memberikan pesan selamat datang untuk BE
     app.get("/", (req, res) => {
-      res.sendFile(path.join(__dirname, "..", "FE", "index.html"));
+      res.send("selamat datang di notes BE");
     });
+
+    // Static FE assets tetap dapat diakses, tetapi tidak otomatis melayani index.html pada root
+    app.use(express.static(path.join(__dirname, "..", "FE"), { index: false }));
 
     // API health check
     app.get("/api/health", (req, res) => {
@@ -45,9 +47,9 @@ async function startServer() {
       res.status(404).json({ message: "Endpoint API tidak ditemukan." });
     });
 
-    // Fallback untuk route frontend
+    // Fallback umum ketika route tidak ditemukan
     app.use((req, res) => {
-      res.sendFile(path.join(__dirname, "..", "FE", "index.html"));
+      res.status(404).json({ message: "Endpoint tidak ditemukan." });
     });
 
     const port = Number(process.env.PORT || 3000);
